@@ -45,7 +45,7 @@ Transposition: Here the encrypted test is passed to a columnar transposition cip
 
 key = "HACK" # key for transposition
 
-```markdown``
+```markdown
 
 
 **FUNCTION FOR GENERATE KEY**
@@ -174,3 +174,4 @@ _**Output**_
  decrypt1 : BdpqJrAoDpFoAlIb
  Original/Decrypted Text : THISSISSPROFSPUD
  (S=SPACE)
+ ```
