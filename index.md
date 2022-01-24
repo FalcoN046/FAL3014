@@ -167,13 +167,10 @@ FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
  originalText(decrypt1, k))
 
 _**Output**_
- ENTER WITHOUT SPACES IN UPPERCASE, FOR SPACE ADD LETTER:'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT
- THIS IS SRIKRISHNA
- ciphertext: BdpqJrAoGpsAseGfEj
- Ciphertext1: drpejpAsG_BJGsEqoAf_
- decrypt1: BdpqJrAoGpsAseGfEj
- Original/Decrypted Text: THISSISSSRIKRISHNA
- HERE,
- S=SPACE
- THE FINAL OUTPUT= THIS IS SRIKRISHNA
-
+ ENTER IN UPPERCASE,FOR SPACE ADD LETTER 'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT 
+ THIS IS PROFSPUD
+ ciphertext : BdpqJrAoDpFoAlIb
+ Ciphertext1 : drplpAFIBJDAqoob
+ decrypt1 : BdpqJrAoDpFoAlIb
+ Original/Decrypted Text : THISSISSPROFSPUD
+ (S=SPACE)
