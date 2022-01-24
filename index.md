@@ -34,12 +34,12 @@ Transposition: Here the encrypted test is passed to a columnar transposition cip
 2. Then, write the message out in columns again, then re-order the columns by reforming the keyword.
 
 ### Steps:
-1) User inputs a String.
-2) The String gets converted into an encrypted form of FAL3014 Cipher.
-3) This output is passed to Columnar Transposition Cipher.
-4) This is the final output
-5) To decrypt the output of Columnar Transposition Cipher is passed to the decrypter function.
-6) This output is passed to the decrypter function of FAL3014 Cipher
+1. User inputs a String.
+2. The String gets converted into an encrypted form of FAL3014 Cipher.
+3. This output is passed to Columnar Transposition Cipher.
+4. This is the final output
+5. To decrypt the output of Columnar Transposition Cipher is passed to the decrypter function.
+6. This output is passed to the decrypter function of FAL3014 Cipher
 
 ### FAL3014 Cipher Pseudocode
 
@@ -47,6 +47,135 @@ key = "HACK" # key for transposition
 
 ```markdown
 Syntax highlighted code block
+
+'''FUNCTION FOR GENERATE KEY'''
+
+FUNCTION generateKey(string, key): #generate key with length same as input
+ key <- list(key)
+ IF len(string) = len(key):
+ RETURN(key)
+ ELSE:
+ for i in range(len(string) -
+ len(key)):
+ key.append(key[i % len(key)])
+ ENDIF
+ ENDFOR
+ RETURN("" . join(key))
+ ENDFUNCTION
+
+'''FAL3014 ENCRYPTER FUNCTION'''
+
+FUNCTION cipherText(string, key): #ecrypting using FAL3014 CIPHER
+ cipher_text <- []
+ for i in range(len(string)):
+ x <- (ord(string[i]) +
+ ord(key[i])) % 51
+ x += ord('A')
+ cipher_text.append(chr(x))
+ ENDFOR
+ RETURN("" . join(cipher_text))
+ ENDFUNCTION
+
+'''COLUMNAL ENCRPTER FUNCTION'''
+
+FUNCTION encryptMessage(msg): #DOING COLUMNAR transformation
+ cipher <- ""
+ #track key indices
+ k_indx <- 0
+ msg_len <- float(len(msg))
+ msg_lst <- list(msg)
+ key_lst <- sorted(list(key))
+ # calculate column of the matrix
+ col <- len(key)
+ # calculate maximum row of the matrix
+ row <- int(math.ceil(msg_len / col))
+ fill_null <- int((row * col) - msg_len)
+ msg_lst.extend('_' * fill_null)
+ matrix <- [msg_lst[i: i + col]
+ for i in range(0, len(msg_lst), col)]
+ ENDFOR
+ for _ in range(col):
+ curr_idx <- key.index(key_lst[k_indx])
+ cipher += ''.join([row[curr_idx]
+ for row in matrix])
+ ENDFOR k_indx += 1
+ ENDFOR, RETURN cipher ENDFUNCTION
+
+'''COLUMNAR DECRYPTER FUNCTION'''
+
+FUNCTION decryptMessage(cipher): #reverse of columnar transformation
+ msg <- ""
+ k_indx <- 0
+ msg_indx <- 0
+ msg_len <- float(len(cipher))
+ msg_lst <- list(cipher)
+ col <- len(key)
+ row <- int(math.ceil(msg_len / col))
+ key_lst <- sorted(list(key))
+ dec_cipher <- []
+ for _ in range(row):
+ dec_cipher += [[None] * col]
+ ENDFOR
+ for _ in range(col):
+ curr_idx <- key.index(key_lst[k_indx])
+ for j in range(row):
+ dec_cipher[j][curr_idx] <- msg_lst[msg_indx]
+ msg_indx += 1
+ ENDFOR
+ k_indx += 1
+ ENDFOR
+ try:
+ msg <- ''.join(sum(dec_cipher, []))
+ except TypeError:
+ raise TypeError("This program cannot",
+ "handle repeating words.")
+ null_count <- msg.count('_')
+ IF null_count > 0:
+ RETURN msg[: -null_count]
+ ENDIF
+ RETURN msg
+ ENDFUNCTION
+
+'''FAL3014 DECRYPTER FUNCTION'''
+
+FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
+ orig_text <- []
+ for i in range(len(cipher_text)):
+ x <- (ord(cipher_text[i]) -
+ ord(key[i]) + 23) % 51
+ x += ord('A')
+ orig_text.append(chr(x))
+ ENDFOR
+ RETURN("" . join(orig_text))
+ ENDFUNCTION
+
+'''MAIN FUNCTION'''
+ IF __name__ = "__main__": #program RUNNER
+ string <- input(" ENTER WITHOUT SPACES IN UPPERCASE,FOR SPACE ADD
+ LETTER :'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT \n")
+ keyword <- "FALCON"
+ k <- generateKey(string, keyword)
+ cipher_text <- cipherText(string,k)
+ OUTPUT "ciphertext :",format(cipher_text)
+ ENDFOR
+ cipher_text1= encryptMessage(cipher_text)
+ OUTPUT "Ciphertext1 :", format(cipher_text1)
+ ENDFOR
+ decrypt1=decryptMessage(cipher_text1)
+ OUTPUT "decrypt1 :",decrypt1
+ OUTPUT "Original/Decrypted Text :",
+ originalText(decrypt1, k))
+
+'''Output'''
+ ENTER WITHOUT SPACES IN UPPERCASE, FOR SPACE ADD LETTER:'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT
+ THIS IS SRIKRISHNA
+ ciphertext: BdpqJrAoGpsAseGfEj
+ Ciphertext1: drpejpAsG_BJGsEqoAf_
+ decrypt1: BdpqJrAoGpsAseGfEj
+ Original/Decrypted Text: THISSISSSRIKRISHNA
+ HERE,
+ S=SPACE
+ THE FINAL OUTPUT= THIS IS SRIKRISHNA
 
 # Header 1
 ## Header 2
