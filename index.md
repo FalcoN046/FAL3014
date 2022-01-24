@@ -1,8 +1,18 @@
-## Welcome to GitHub Pages
+## FAL3014
 
-You can use the [editor on GitHub](https://github.com/FalcoN046/FAL3014/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+The FAL3014 Cipher is a polyalphabetic substitution cipher. It is similar to the Vigenère cipher but uses a different method of generating the key. It is more secure than the Vigenère cipher.
+The encryption of the original text is done using the Vigenère table but there is a little change in it.
+• The table consists of the alphabets written out 51 times in different rows instead of 26 as in Vigenère, each alphabet shifted cyclically to the left compared to the previous
+  alphabet, corresponding to the 51 possible Caesar Ciphers.
+• At different points in the encryption process, the cipher uses a different alphabet from one of the rows.
+• The alphabet used at each point depends on a repeating keyword.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+51= 6+1+12+3+15+14 => FALCON/ FAL3014
+
+### Encryption:
+The first letter of the plaintext is the first letter of the key. So use the row and column of the Vigenère square. Similarly, for the second letter of the plaintext, the second letter of the key is used.
+The rest of the plaintext is enciphered in a similar fashion
+
 
 ### Markdown
 
