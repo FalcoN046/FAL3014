@@ -46,9 +46,9 @@ Transposition: Here the encrypted test is passed to a columnar transposition cip
 key = "HACK" # key for transposition
 
 ```markdown
-Syntax highlighted code block
 
-'''FUNCTION FOR GENERATE KEY'''
+
+**FUNCTION FOR GENERATE KEY**
 
 FUNCTION generateKey(string, key): #generate key with length same as input
  key <- list(key)
@@ -63,7 +63,7 @@ FUNCTION generateKey(string, key): #generate key with length same as input
  RETURN("" . join(key))
  ENDFUNCTION
 
-'''FAL3014 ENCRYPTER FUNCTION'''
+**FAL3014 ENCRYPTER FUNCTION**
 
 FUNCTION cipherText(string, key): #ecrypting using FAL3014 CIPHER
  cipher_text <- []
@@ -76,7 +76,7 @@ FUNCTION cipherText(string, key): #ecrypting using FAL3014 CIPHER
  RETURN("" . join(cipher_text))
  ENDFUNCTION
 
-'''COLUMNAL ENCRPTER FUNCTION'''
+**COLUMNAL ENCRPTER FUNCTION**
 
 FUNCTION encryptMessage(msg): #DOING COLUMNAR transformation
  cipher <- ""
@@ -85,9 +85,9 @@ FUNCTION encryptMessage(msg): #DOING COLUMNAR transformation
  msg_len <- float(len(msg))
  msg_lst <- list(msg)
  key_lst <- sorted(list(key))
- # calculate column of the matrix
+ #calculate column of the matrix
  col <- len(key)
- # calculate maximum row of the matrix
+ #calculate maximum row of the matrix
  row <- int(math.ceil(msg_len / col))
  fill_null <- int((row * col) - msg_len)
  msg_lst.extend('_' * fill_null)
@@ -101,7 +101,7 @@ FUNCTION encryptMessage(msg): #DOING COLUMNAR transformation
  ENDFOR k_indx += 1
  ENDFOR, RETURN cipher ENDFUNCTION
 
-'''COLUMNAR DECRYPTER FUNCTION'''
+**COLUMNAR DECRYPTER FUNCTION**
 
 FUNCTION decryptMessage(cipher): #reverse of columnar transformation
  msg <- ""
@@ -136,7 +136,7 @@ FUNCTION decryptMessage(cipher): #reverse of columnar transformation
  RETURN msg
  ENDFUNCTION
 
-'''FAL3014 DECRYPTER FUNCTION'''
+**FAL3014 DECRYPTER FUNCTION**
 
 FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
  orig_text <- []
@@ -149,7 +149,7 @@ FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
  RETURN("" . join(orig_text))
  ENDFUNCTION
 
-'''MAIN FUNCTION'''
+**MAIN FUNCTION**
  IF __name__ = "__main__": #program RUNNER
  string <- input(" ENTER WITHOUT SPACES IN UPPERCASE,FOR SPACE ADD
  LETTER :'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT \n")
@@ -166,7 +166,7 @@ FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
  OUTPUT "Original/Decrypted Text :",
  originalText(decrypt1, k))
 
-'''Output'''
+_**Output**_
  ENTER WITHOUT SPACES IN UPPERCASE, FOR SPACE ADD LETTER:'S' (or) REMOVE EXTRA 'S' FROM THE FINAL OUTPUT
  THIS IS SRIKRISHNA
  ciphertext: BdpqJrAoGpsAseGfEj
@@ -177,27 +177,3 @@ FUNCTION originalText(cipher_text, key): #reverse of FAL3014 CIPHER
  S=SPACE
  THE FINAL OUTPUT= THIS IS SRIKRISHNA
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FalcoN046/FAL3014/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
